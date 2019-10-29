@@ -45,6 +45,8 @@ function getChartData(type) {
     return transactionsData;
 }
 
+
+//Make Chart
 function writeToDocument(type) {
     var tableRows = [];
 
@@ -71,7 +73,7 @@ function writeToDocument(type) {
     })
 }
 
-//Make composite chart
+//Make graph
 function makeGraphs(error, transactionsData) {
 
     var TD = [];
@@ -79,7 +81,6 @@ function makeGraphs(error, transactionsData) {
 
     for (var i = 0; i < transactionsData.Data.length; i++) {
         var newObject = {};
-
         newObject.time = transactionsData.Data[i]['time']
         newObject.close = transactionsData.Data[i]['close']
         TD.push(newObject);
@@ -100,6 +101,17 @@ function makeGraphs(error, transactionsData) {
     console.log(minDate)
     console.log(minDate)
 
+    // dc.barChart("#chart-here")
+    //     .width(1000)
+    //     .height(300)
+    //     .margins({ top: 10, right: 50, bottom: 30, left: 50 })
+    //     .dimension(date_dim)
+    //     .group(close)
+    //     .transitionDuration(500)
+    //     .x(d3.time.scale().domain([minDate, maxDate]))
+    //     .xAxisLabel("Time")
+    //     .yAxis().ticks(4);
+    
     dc.barChart("#chart-here")
         .width(1000)
         .height(300)
@@ -107,7 +119,8 @@ function makeGraphs(error, transactionsData) {
         .dimension(date_dim)
         .group(close)
         .transitionDuration(500)
-        .x(d3.time.scale().domain([minDate, maxDate]))
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
         .xAxisLabel("Time")
         .yAxis().ticks(4);
 
