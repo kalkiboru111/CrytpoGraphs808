@@ -2,7 +2,7 @@ function getData(type, cb) {
 
     var xhr = new XMLHttpRequest();
 
-    xhr.open("GET", "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=10&api_key={d2b45d5710fc09775ad795e0636b58145f76f195cc96def94c38b842c49138d2}")
+    xhr.open("GET", "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=10&api_key={d2b45d5710fc09775ad795e0636b58145f76f195cc96def94c38b842c49138d2}")
     xhr.send();
 
     xhr.onreadystatechange = function() {
@@ -99,8 +99,14 @@ function makeGraphs(error, transactionsData) {
     var maxDate = date_dim.top(1)[0];
     var close = date_dim.group().reduceSum(dc.pluck('close'));
     console.log(minDate)
-    console.log(minDate)
+    console.log(maxDate)
+    
+    var yScale = d3.scale.linear()
+                .domain([0, d3.max(close)])
+                .range([0, 200])
 
+
+    close = yScale(close);
     // dc.barChart("#chart-here")
     //     .width(1000)
     //     .height(300)
@@ -112,10 +118,10 @@ function makeGraphs(error, transactionsData) {
     //     .xAxisLabel("Time")
     //     .yAxis().ticks(4);
     
-    dc.barChart("#chart-here")
+    dc.lineChart("#chart-here")
         .width(1000)
-        .height(300)
-        .margins({ top: 10, right: 50, bottom: 30, left: 50 })
+        .height(500)
+        .margins({ top: 20, right: 10, bottom: 20, left: 50 })
         .dimension(date_dim)
         .group(close)
         .transitionDuration(500)
