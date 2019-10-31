@@ -18,19 +18,18 @@
     <script type="text/javascript" src="main.js"></script>
 </head>
 
-<body>
-    
+
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">CrytpoGraphs808</a>
+    <a class="navbar-brand" href="index.html">CrytpoGraphs808</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home
+          <a class="nav-link" href="index.html">Home
                 <span class="sr-only">(BTC Graph)</span>
               </a>
         </li>
@@ -48,30 +47,14 @@
   </div>
 </nav>
 
-<!-- Full Page Image Header with Vertically Centered Content -->
 <header class="masthead">
   <div class="container h-100">
     <div class="row h-100 align-items-center">
       <div class="col-12 text-center">
-        <h1 class="font-weight-light">Insert CryptoGraph Here</h1>
-        <div id="chart-here"></div>
+          <button onclick="writeToDocument('Data')"> Chart </button>
+        <div id="data"></div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- Page Content -->
-<section class="py-5">
-  <div class="container">
-    <h2 class="font-weight-light">The Above Graphs reflect the current price of BTC.</h2>
-  </div>
-</section>
-
-    <script>
-        queue()
-            .defer(d3.json, "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=10&api_key={d2b45d5710fc09775ad795e0636b58145f76f195cc96def94c38b842c49138d2}")
-            .await(makeGraphs);
-    </script>
-</body>
-
-</html>

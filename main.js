@@ -76,21 +76,21 @@ function writeToDocument(type) {
 function makeGraphs(error, transactionsData) {
 
     var GraphData = [];
-    var dateFormat = d3.time.format("%Y-%m-%d %H:%M:%S");
-    var numberFormat = d3.format('.2f');
-    
+    // var dateFormat = d3.time.format("%Y-%m-%d %H:%M:%S");
+    // var numberFormat = d3.format('.2f');
 
     for (var i = 0; i < transactionsData.Data.length; i++) {
         var newObject = {};
         newObject.time = transactionsData.Data[i]['time']
         newObject.close = transactionsData.Data[i]['close']
-
         GraphData.push(newObject);
     }
     
-    GraphData.forEach(function(d) {
-        d["time"] = new Date(d["time"])
-    });
+    console.log(GraphData)
+    
+    // GraphData.forEach(function(d) {
+    //     d["time"] = new Date(d["time"])
+    // });
 
     var ndx = crossfilter(GraphData);
     var date_dim = ndx.dimension(dc.pluck('time'));
@@ -119,8 +119,8 @@ function makeGraphs(error, transactionsData) {
         .width(1000)
         .height(500)
         .margins({ top: 20, right: 10, bottom: 20, left: 50 })
-        .dimension(date_dim)
-        .group(close)
+        .dimension(close)
+        .group(date_dim)
         .x(d3.scale.ordinal().domain(minDate, maxDate))
         .yAxisLabel("Total Volume of BTC traded @ Close")
         .xUnits(dc.units.ordinal)
