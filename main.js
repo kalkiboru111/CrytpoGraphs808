@@ -72,6 +72,12 @@ function writeToDocument(type) {
     })
 }
 
+
+queue()
+    .defer(d3.json, "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=10&api_key={d2b45d5710fc09775ad795e0636b58145f76f195cc96def94c38b842c49138d2}")
+    .await(makeGraphs);
+
+
 //Make graph
 function makeGraphs(error, transactionsData) {
 
@@ -86,11 +92,11 @@ function makeGraphs(error, transactionsData) {
         newTime = newObject.time
         console.log(newTime)
         GraphData.push(newObject);
-        
+
     }
     // Formatting time field (converting from Unix timestamp to y/m/d format)
-    GraphData.forEach(function(d){ d.time = new Date(d.time * 1000) });
-        
+    GraphData.forEach(function(d) { d.time = new Date(d.time * 1000) });
+
     console.log(GraphData)
 
     var ndx = crossfilter(GraphData);
@@ -101,7 +107,7 @@ function makeGraphs(error, transactionsData) {
     var maxDate = date_dim.top(1)[0];
     console.log(minDate)
     console.log(maxDate)
-    
+
     // dc.barChart("#chart-here")
     //     .width(1000)
     //     .height(300)
@@ -112,7 +118,7 @@ function makeGraphs(error, transactionsData) {
     //     .x(d3.time.scale().domain([minDate, maxDate]))
     //     .xAxisLabel("Time")
     //     .yAxis().ticks(4);
-    
+
     dc.lineChart("#chart-here")
         .width(1000)
         .height(500)
@@ -120,12 +126,11 @@ function makeGraphs(error, transactionsData) {
         .dimension(date_dim)
         .group(close)
         .transitionDuration(500)
-        .x(d3.time.scale().domain([minDate,maxDate]))
+        .x(d3.time.scale().domain([minDate, maxDate]))
         .xAxisLabel("Time")
         .yAxisLabel("Total Volume of BTC traded @ Close")
         .elasticY(true)
         .yAxis().ticks(4);
-        
+
     dc.renderAll();
 }
-
