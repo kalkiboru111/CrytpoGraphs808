@@ -91,18 +91,24 @@ function makeGraphs(error, transactionsData) {
         newObject.close = transactionsData.Data[i]['close']
         newTime = newObject.time
         GraphData.push(newObject);
-
+        
     }
-
+    
+    timeFormat(GraphData)
     lineChart(GraphData);
 
+}
+
+function timeFormat(GraphData){
+    GraphData.forEach(function(d) { d.newTime = new Date(d.time * 1000) });
+    console.log(GraphData)
 }
 
 function lineChart(data){
 
 
     var ndx = crossfilter(data);
-    var runDim = ndx.dimension(dc.pluck("time"));  /* Lets make a dimension! Use a heading from your Data */
+    var runDim = ndx.dimension(dc.pluck("newTime"));  /* Lets make a dimension! Use a heading from your Data */
     var runGroup = runDim.group().reduceSum(dc.pluck("close"));
     var chart = dc.lineChart("#chart-here")  /* The Div you want to Draw your graph in*/
         .width(900)
@@ -118,7 +124,6 @@ function lineChart(data){
 
     dc.renderAll();
 }
-
 
 
     // for (var i = 0; i < transactionsData.Data.length; i++) {
