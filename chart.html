@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,40 +22,59 @@
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">CrytpoGraphs808</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">CrytpoGraphs808</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home
                 <span class="sr-only">(BTC Graph)</span>
               </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="chart.html">BTC Chart</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-      </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="chart.html">BTC Chart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 
 <header class="masthead">
-  <div class="container h-100">
-    <div class="row h-100 align-items-center">
-      <div class="col-12 text-center">
-          <button onclick="writeToDocument('Data')"> Chart </button>
-        <div id="data"></div>
-      </div>
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <table class="table table-hover dc-data-table dc-chart">
+                    <thead>
+                        <tr>
+                            <th class="dc-table-head">Time</th>
+                            <th class="dc-table-head">Close</th>
+                            <th class="dc-table-head">High</th>
+                            <th class="dc-table-head">Low</th>
+                            <th class="dc-table-head">Open</th>
+                            <th class="dc-table-head">VolumeFrom</th>
+                            <th class="dc-table-head">VolumeTo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="dc-table-section dc-table-group info">
+                            <td><div id="data"></div></td>
+                        </tr>
+                        
+                    </tbody>
+                    
+                </table>
+                <button onclick="writeToDocument('Data')"> Chart </button>
+                
+            </div>
+        </div>
     </div>
-  </div>
 </header>
-
