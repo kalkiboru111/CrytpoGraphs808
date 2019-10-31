@@ -84,34 +84,23 @@ function makeGraphs(error, transactionsData) {
         newObject.time = transactionsData.Data[i]['time']
         newObject.close = transactionsData.Data[i]['close']
         newTime = newObject.time
-        
         console.log(newTime)
         GraphData.push(newObject);
         
     }
-    
-    console.log(GraphData)
+    // Formatting time field (converting from Unix timestamp to y/m/d format)
     GraphData.forEach(function(d){ d.time = new Date(d.time * 1000) });
-    
-    
-    // GraphData.forEach(function(d) {
-    //     d["time"] = dateFormat(d["time"])
-    // });
-    
-    // console.log(GraphData)
-    
-    // GraphData.forEach(function(d) {
-    //     d["time"] = new Date(d["time"])
-    // });
-    
+        
+    console.log(GraphData)
 
     var ndx = crossfilter(GraphData);
+    console.log(ndx)
     var date_dim = ndx.dimension(dc.pluck('time'));
-    var close = date_dim.group('close')
-    // var minDate = date_dim.bottom(1)[0];
-    // var maxDate = date_dim.top(1)[0];
-    // console.log(minDate)
-    // console.log(maxDate)
+    var close = date_dim.group().reduceSum(dc.pluck('close'));
+    var minDate = date_dim.bottom(1)[0];
+    var maxDate = date_dim.top(1)[0];
+    console.log(minDate)
+    console.log(maxDate)
     
     // dc.barChart("#chart-here")
     //     .width(1000)
@@ -130,12 +119,11 @@ function makeGraphs(error, transactionsData) {
         .margins({ top: 20, right: 10, bottom: 20, left: 50 })
         .dimension(date_dim)
         .group(close)
-        .x(d3.scale.ordinal()).domain([minDate, maxDate])
-        .yAxisLabel("Total Volume of BTC traded @ Close")
-        .xUnits(dc.units.ordinal)
         .transitionDuration(500)
-        .elasticY(true)
+        .x(d3.time.scale().domain([minDate,maxDate]))
         .xAxisLabel("Time")
+        .yAxisLabel("Total Volume of BTC traded @ Close")
+        .elasticY(true)
         .yAxis().ticks(4);
         
     dc.renderAll();
