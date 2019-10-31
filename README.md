@@ -1,41 +1,53 @@
 
-# Your Project's Name
+# CryptoGraphs808
 
-One or two paragraphs providing an overview of your project.
-
-Essentially, this part is your sales pitch.
+The purpose of this project is to provide users with graphs which track the movements of the cryptocurrency markets, specifically with respect to the closing price of Bitcoin on any given day. This is potentially of interest to any site user with an interest in cryptocurrency, and of special interest to cryptocurrency investors. 
  
 ## UX
  
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
+This site is for users who are seeking data. It is therefore a "no frills" site, without any extraneous aesthetic or functional features. The goal of this users is simple: they want to understand the current state of the Bitcoin market. 
 
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-- As a user type, I want to perform an action, so that I can achieve a goal.
-
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
+The user stories are fairly generic and self-explanatory:
+- As a Bitcoin investor (or as any interested observer), I want to understand a) the current price of Bitcoin and b) how to parameterize that price with respect to the recent past, so that I can assess the price and relative performance of Bitcoin. This site enables me to do this by providing a graphical representation of the price of Bitcoin over time (per week).
+- As a Bitcoin investor  (or as any interested observer), I want further specifics regarding the performance of Bitcoin, so that I can make decisions regarding my investments. I can do this by clicking on the "Data" button whcih provides me with a chart with the specifics. 
 
 ## Features
 
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
+This project only has as many features as are necessary for data-driven users to derive utility from the site.
  
 ### Existing Features
-- Feature 1 - allows users X to achieve Y, by having them fill out Z
-- ...
-
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
+- Line Graph - allows users to contextualize the price of Bitcoin in an intuitive way, by presenting them with the graph which shows fluctuations in the price of Bitcoin over time. 
+- Data Chart - allows users to investigate the data more closely by clicking on the "data" button, which reveals a chart with a structured display of the properties of the data. 
 
 ### Features Left to Implement
-- Another feature idea
+I am considering adding the following features to the project in future:
+- New Crytpocurrencies - the prices of cryptocurrencies are somewhat interdependent, which means that graphing further cryptocurrencies would provide further useful context for users. 
+- Graph by Alternate Properties - I am consider using crossfilter to enable users to alternate between different types of graphs. This would be useful for users who are seeking a contextual understanding of properties of the data apart from the price.  
 
 ## Technologies Used
 
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
+In terms of the languages, frameworks, libraries used.
 
+- **HTML**, **CSS**, **Javascript**
+  - Base languages used to create website
+- [Cloud9](https://aws.amazon.com/cloud9/) 
+    - **Cloud9** was used as the IDE for development.
 - [JQuery](https://jquery.com)
     - The project uses **JQuery** to simplify DOM manipulation.
-
+- [Bootstrap](http://getbootstrap.com/)
+    - **Bootstrap** is used to render a responsive layout.
+- [Jasmine](https://jasmine.github.io/)
+    - This project uses **Jasmine** to run automatic tests on all the JavaScript and jQuery code.
+- [Git](https://git-scm.com)
+    - This project uses **Git** for version control. 
+- [GitHub](https://github.com/)
+    - This project uses **GitHub** as a remote repository.
+- [Google Fonts](https://fonts.google.com/)
+    - This project uses **Google Fonts** to style fonts in the application.
+- [FontAwesome](https://fontawesome.com/)
+    - This project uses **FontAwesome** for navigation icons.
+- [Google Chrome - Dev Tools](https://www.google.com/chrome/)
+    - This project used **Google Chrome - Dev Tools** to test responsiveness and speed up the design process.
 
 ## Testing
 
