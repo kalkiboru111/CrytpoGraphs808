@@ -2,7 +2,7 @@ function getData(type, cb) {
 
     var xhr = new XMLHttpRequest();
 
-    xhr.open("GET", "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=10&api_key={4bad6ccf9d2e08e0eac22324916252fa02da753e3945b75f25547bd777941477}")
+    xhr.open("GET", "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=10&api_key={d2b45d5710fc09775ad795e0636b58145f76f195cc96def94c38b842c49138d2}")
     xhr.send();
 
     xhr.onreadystatechange = function() {
@@ -90,65 +90,23 @@ function makeGraphs(error, transactionsData) {
         newObject.time = transactionsData.Data[i]['time']
         newObject.close = transactionsData.Data[i]['close']
         newTime = newObject.time
+        console.log(newTime)
         GraphData.push(newObject);
-        
+
     }
-    
-    timeFormat(GraphData)
-    lineChart(GraphData);
+    // Formatting time field (converting from Unix timestamp to y/m/d format)
+    GraphData.forEach(function(d) { d.time = new Date(d.time * 1000) });
 
-}
-
-function timeFormat(GraphData){
-    GraphData.forEach(function(d) { d.newTime = new Date(d.time * 1000) });
     console.log(GraphData)
-}
 
-function lineChart(data){
-
-
-    var ndx = crossfilter(data);
-    var runDim = ndx.dimension(dc.pluck("newTime"));  
-    var runGroup = runDim.group().reduceSum(dc.pluck("close"));
-    // var minDate = runDim.bottom(1)[0];
-    // var maxDate = runDim.top(1)[0];
-    var chart = dc.lineChart("#chart-here")  /* The Div you want to Draw your graph in*/
-        .width(900)
-        .height(500)
-        .margins({top: 20, right: 50, bottom: 100, left: 80})
-        .x(d3.scale.ordinal())
-        .y(d3.scale.linear().domain[0, 20000])
-        .xUnits(dc.units.ordinal)
-        .brushOn(false)
-        .xAxisLabel('X-Axis')
-        .yAxisLabel('Y-Axis')
-        .dimension(runDim)
-        .group(runGroup);
-
-    dc.renderAll();
-}
-
-
-    // for (var i = 0; i < transactionsData.Data.length; i++) {
-    //     var newObject = {};
-    //     newObject.time = transactionsData.Data[i]['time']
-    //     newObject.close = transactionsData.Data[i]['close']
-    //     newTime = newObject.time
-    //     GraphData.push(newObject);
-
-    // }
-    // // Formatting time field (converting from Unix timestamp to y/m/d format)
-    // GraphData.forEach(function(d) { d.newTime = new Date(d.time * 1000) });
-
-
-
-    // var ndx = crossfilter(GraphData);
-    // var date_dim = ndx.dimension(function(d) {return d.newTime;});
-    // var close = date_dim.group().reduceSum(dc.pluck('close'));
-    // var minDate = date_dim.bottom(1)[0];
-    // var maxDate = date_dim.top(1)[0];
-
-    // console.log(date_dim)
+    var ndx = crossfilter(GraphData);
+    console.log(ndx)
+    var date_dim = ndx.dimension(dc.pluck('time'));
+    var close = date_dim.group().reduceSum(dc.pluck('close'));
+    var minDate = date_dim.bottom(1)[0];
+    var maxDate = date_dim.top(1)[0];
+    console.log(minDate)
+    console.log(maxDate)
 
     // dc.barChart("#chart-here")
     //     .width(1000)
@@ -161,20 +119,18 @@ function lineChart(data){
     //     .xAxisLabel("Time")
     //     .yAxis().ticks(4);
 
-//     dc.lineChart("#chart-here")
-//         .width(1000)
-//         .height(500)
-//         .margins({ top: 20, right: 10, bottom: 20, left: 50 })
-//         .dimension(date_dim)
-//         .group(close)
-//         .transitionDuration(500)
-//         .x(d3.time.scale().domain([minDate, maxDate]).range)
-//         .xAxisLabel("Time")
-//         .yAxisLabel("Total Volume of BTC traded @ Close")
-//         .elasticY(true)
-//         .yAxis().ticks(4);
+    dc.lineChart("#chart-here")
+        .width(1000)
+        .height(500)
+        .margins({ top: 20, right: 10, bottom: 20, left: 50 })
+        .dimension(date_dim)
+        .group(close)
+        .transitionDuration(500)
+        .x(d3.time.scale().domain([minDate, maxDate]))
+        .xAxisLabel("Time")
+        .yAxisLabel("Total Volume of BTC traded @ Close")
+        .elasticY(true)
+        .yAxis().ticks(4);
 
-//     dc.renderAll();
-// }
-
-
+    dc.renderAll();
+}
