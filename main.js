@@ -82,7 +82,7 @@ queue()
 function makeGraphs(error, transactionsData) {
 
     var GraphData = [];
-    var dateFormat = d3.time.format("%c");
+    var dateFormat = d3.time.format("%s");
     var numberFormat = d3.format('.2f');
 
     for (var i = 0; i < transactionsData.Data.length; i++) {
@@ -118,8 +118,8 @@ function lineChart(data){
         .y(d3.scale.linear().domain([9000, 9500]))
         .xUnits(dc.units.ordinal)
         .brushOn(false)
-        .xAxisLabel('X-Axis')
-        .yAxisLabel('Y-Axis')
+        .xAxisLabel('Time')
+        .yAxisLabel('BTC Price')
         .dimension(runDim)
         .group(runGroup);
 

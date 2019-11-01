@@ -24,6 +24,6 @@
   -o-transform: rotate(-45deg);
 
   /* Internet Explorer */
-  /*filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);*/
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5);
 
 }
