@@ -35,7 +35,7 @@ In terms of the languages, frameworks, libraries used.
 - [JQuery](https://jquery.com)
     - The project uses **JQuery** to simplify DOM manipulation.
 - [Bootstrap](http://getbootstrap.com/)
-    - **Bootstrap** is used to render a responsive layout.
+    - **Bootstrap** is used to render a responsive layout. Templates were used for the contact form, home, and chart pages.
 - [Jasmine](https://jasmine.github.io/)
     - This project uses **Jasmine** to run automatic tests on all the JavaScript and jQuery code.
 - [Git](https://git-scm.com)
