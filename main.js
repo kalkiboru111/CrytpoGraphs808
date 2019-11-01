@@ -84,11 +84,21 @@ function makeGraphs(error, transactionsData) {
     var GraphData = [];
     var dateFormat = d3.time.format("%c");
     var numberFormat = d3.format('.2f');
+    var lowestNum = transactionsData.Data[0]['close'];
+    var highestNum = transactionsData.Data[0]['close'];
+    console.log(lowestNum)
+    console.log(highestNum)
 
     for (var i = 0; i < transactionsData.Data.length; i++) {
         var newObject = {};
         newObject.time = transactionsData.Data[i]['time']
         newObject.close = transactionsData.Data[i]['close']
+        if (transactionsData.Data[i]['close'] < lowestNum){
+            lowestNum = transactionsData.Data[i]['close'];
+        };
+        if (transactionsData.Data[i]['close'] > highestNum){
+            highestNum = transactionsData.Data[i]['close'];
+        };
         newTime = newObject.time
         GraphData.push(newObject);
         
