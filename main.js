@@ -82,7 +82,7 @@ queue()
 function makeGraphs(error, transactionsData) {
 
     var GraphData = [];
-    var dateFormat = d3.time.format("%s");
+    var dateFormat = d3.time.format("%c");
     var numberFormat = d3.format('.2f');
 
     for (var i = 0; i < transactionsData.Data.length; i++) {
@@ -100,7 +100,9 @@ function makeGraphs(error, transactionsData) {
 }
 
 function timeFormat(GraphData){
-    GraphData.forEach(function(d) { d.newTime = new Date(d.time * 1000) });
+    GraphData.forEach(function(d) { d.newTime = new Date(d.time * 1000); 
+        d.newTime = d.newTime.getHours();
+    });
     console.log(GraphData)
 }
 
