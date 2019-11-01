@@ -92,16 +92,15 @@ function makeGraphs(error, transactionsData) {
     for (var i = 0; i < transactionsData.Data.length; i++) {
         var newObject = {};
         newObject.time = transactionsData.Data[i]['time']
-        newObject.close = transactionsData.Data[i]['close']
-        if (transactionsData.Data[i]['close'] < lowestNum){
-            lowestNum = transactionsData.Data[i]['close'];
+        newObject.close = transactionsData.Data[i]['close'];
+        if (transactionsData.Data[i]['close'] < lowestNum[i]){
+            lowestNum[i] = transactionsData.Data[i]['close'];
         };
-        if (transactionsData.Data[i]['close'] > highestNum){
-            highestNum = transactionsData.Data[i]['close'];
+        if (transactionsData.Data[i]['close'] > highestNum[i]){
+            highestNum[i] = transactionsData.Data[i]['close'];
         };
         newTime = newObject.time
         GraphData.push(newObject);
-        
     }
     
     timeFormat(GraphData)
