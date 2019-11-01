@@ -104,7 +104,7 @@ function makeGraphs(error, transactionsData) {
     }
     
     timeFormat(GraphData)
-    lineChart(GraphData);
+    lineChart(GraphData, lowestNum, highestNum);
 
 }
 
@@ -115,7 +115,7 @@ function timeFormat(GraphData){
     console.log(GraphData)
 }
 
-function lineChart(data){
+function lineChart(data, lowestNum, highestNum){
     var ndx = crossfilter(data);
     var runDim = ndx.dimension(dc.pluck("newTime"));  
     var runGroup = runDim.group().reduceSum(dc.pluck("close"));
@@ -130,7 +130,7 @@ function lineChart(data){
         .height(500)
         .margins({top: 20, right: 50, bottom: 100, left: 80})
         .x(d3.scale.ordinal())
-        .y(d3.scale.linear().domain([9000, 9500]))
+        .y(d3.scale.linear().domain([lowestNum, highestNum]))
         .xUnits(dc.units.ordinal)
         .brushOn(false)
         .xAxisLabel('Time (hours)')
