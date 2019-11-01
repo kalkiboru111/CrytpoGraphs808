@@ -2,7 +2,7 @@ function getData(type, cb) {
 
     var xhr = new XMLHttpRequest();
 
-    xhr.open("GET", "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=10&api_key={d2b45d5710fc09775ad795e0636b58145f76f195cc96def94c38b842c49138d2}")
+    xhr.open("GET", "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=10&api_key={4bad6ccf9d2e08e0eac22324916252fa02da753e3945b75f25547bd777941477}")
     xhr.send();
 
     xhr.onreadystatechange = function() {
@@ -108,13 +108,16 @@ function lineChart(data){
 
 
     var ndx = crossfilter(data);
-    var runDim = ndx.dimension(dc.pluck("newTime"));  /* Lets make a dimension! Use a heading from your Data */
+    var runDim = ndx.dimension(dc.pluck("newTime"));  
     var runGroup = runDim.group().reduceSum(dc.pluck("close"));
+    // var minDate = runDim.bottom(1)[0];
+    // var maxDate = runDim.top(1)[0];
     var chart = dc.lineChart("#chart-here")  /* The Div you want to Draw your graph in*/
         .width(900)
         .height(500)
         .margins({top: 20, right: 50, bottom: 100, left: 80})
         .x(d3.scale.ordinal())
+        .y(d3.scale.linear().domain[0, 20000])
         .xUnits(dc.units.ordinal)
         .brushOn(false)
         .xAxisLabel('X-Axis')
