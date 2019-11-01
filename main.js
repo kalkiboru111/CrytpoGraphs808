@@ -147,6 +147,9 @@ function lineChart(data, lowestNum, highestNum){
 }
 
 
+
+
+
     // for (var i = 0; i < transactionsData.Data.length; i++) {
     //     var newObject = {};
     //     newObject.time = transactionsData.Data[i]['time']
@@ -194,5 +197,6 @@ function lineChart(data, lowestNum, highestNum){
 
 //     dc.renderAll();
 // }
+
 
 
