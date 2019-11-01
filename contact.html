@@ -21,7 +21,7 @@
 
 <body>
 
-    <!-- Navigation -->
+    <!-- BootStrap Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">CrytpoGraphs808</a>
@@ -55,6 +55,7 @@
                         <div class="row">
                             <div class=".col-md-offset-3 col-md-9 .col-lg-offset-3 col-lg-8">
                                 <div class="well well-sm">
+                                    <!--BootStrap Template Contact Form-->
                                     <form class="form-horizontal" action="message.html" method="get">
                                         <fieldset>
                                             <legend class="text-center">Contact us</legend>
@@ -71,7 +72,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="email">Your E-mail</label>
                                                 <div class="col-md-9">
-                                                    <input id="email" name="email" type="text" placeholder="Your email" class="form-control" required>
+                                                    <input id="email" name="email" type="email" placeholder="Your email" class="form-control" required>
                                                 </div>
                                             </div>
 
@@ -99,18 +100,6 @@
             </div>
         </div>
     </header>
-
-    <!-- Page Content -->
-    <section class="py-5">
-        <div class="container">
-            <!--<h2 class="font-weight-light">The Above Graphs reflect the current price of BTC.</h2>-->
-        </div>
-    </section>
-    <script>
-        queue()
-            .defer(d3.json, "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=10&api_key={d2b45d5710fc09775ad795e0636b58145f76f195cc96def94c38b842c49138d2}")
-            .await(makeGraphs);
-    </script>
 </body>
 
 </html>

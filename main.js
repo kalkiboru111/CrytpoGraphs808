@@ -1,3 +1,5 @@
+// Gets data from the API
+
 function getData(type, cb) {
 
     var xhr = new XMLHttpRequest();
@@ -12,6 +14,7 @@ function getData(type, cb) {
     };
 }
 
+// Retrives the table headers from the array provided by the API
 function getTableHeadhers(obj) {
     var tableHeaders = []
 
@@ -21,7 +24,7 @@ function getTableHeadhers(obj) {
     return `<tr>${tableHeaders}</tr>`;
 }
 
-// Get Chart data //
+// Retrives the data for the BTC Price chart
 function getChartData(type) {
     var transactionsData = [];
 
@@ -45,7 +48,7 @@ function getChartData(type) {
     return transactionsData;
 }
 
-//Make Chart
+// JS function which writes the data to the DOM
 function writeToDocument(type) {
     var tableRows = [];
 
@@ -73,12 +76,7 @@ function writeToDocument(type) {
 }
 
 
-queue()
-    .defer(d3.json, "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=10&api_key={d2b45d5710fc09775ad795e0636b58145f76f195cc96def94c38b842c49138d2}")
-    .await(makeGraphs);
-
-
-//Make graph
+//Makes graph by formatting the data and calling the lineChart function
 function makeGraphs(error, transactionsData) {
 
     var GraphData = [];
@@ -115,6 +113,7 @@ function timeFormat(GraphData){
     console.log(GraphData)
 }
 
+// A DC function which builds the line chart
 function lineChart(data, lowestNum, highestNum){
     var ndx = crossfilter(data);
     var runDim = ndx.dimension(dc.pluck("newTime"));  
