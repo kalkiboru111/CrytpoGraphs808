@@ -1,3 +1,9 @@
+
+
+queue()
+    .defer(d3.json, "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=10&api_key={63ccb497d786ebd21bb4ac7e1f8842f8ae98d05aafcbe02f0aa3c51fe98b91ad}")
+    .await(makeGraphs);
+    
 // Gets data from the API
 
 function getData(type, cb) {
@@ -75,9 +81,6 @@ function writeToDocument(type) {
     })
 }
 
-queue()
-    .defer(d3.json, "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=10&api_key={d2b45d5710fc09775ad795e0636b58145f76f195cc96def94c38b842c49138d2}")
-    .await(makeGraphs);
 
 //Makes graph by formatting the data and calling the lineChart function
 function makeGraphs(error, transactionsData) {
