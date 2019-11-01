@@ -108,10 +108,14 @@ function timeFormat(GraphData){
 
 function lineChart(data){
     var ndx = crossfilter(data);
-    // var minClose = runGroup.bottom(1)[0];
-    // var maxClose = runGroup.top(1)[0];
     var runDim = ndx.dimension(dc.pluck("newTime"));  
     var runGroup = runDim.group().reduceSum(dc.pluck("close"));
+    
+    // for (var i = 0; i < runGroup.length; i++) {
+    //     var closeObject = {}
+    // }
+    // var minClose = runGroup.bottom(1)[0];
+    // var maxClose = runGroup.top(1)[0];
     var chart = dc.lineChart("#chart-here")  /* The Div you want to Draw your graph in*/
         .width(900)
         .height(500)
@@ -120,7 +124,7 @@ function lineChart(data){
         .y(d3.scale.linear().domain([9000, 9500]))
         .xUnits(dc.units.ordinal)
         .brushOn(false)
-        .xAxisLabel('Time')
+        .xAxisLabel('Time (hours)')
         .yAxisLabel('BTC Price')
         .dimension(runDim)
         .group(runGroup);
