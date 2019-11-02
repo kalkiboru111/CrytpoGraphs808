@@ -28,6 +28,11 @@ I am considering adding the following features to the project in future:
 - New Crytpocurrencies - the prices of cryptocurrencies are somewhat interdependent, which means that graphing further cryptocurrencies would provide further useful context for users. 
 - Graph by Alternate Properties - I am consider using crossfilter to enable users to alternate between different types of graphs. This would be useful for users who are seeking a contextual understanding of properties of the data apart from the price.  
 
+## Bugs 
+
+Note that for security reasons Google Chrome has certain restrictions regarding Cross Origin Resources, and does not display the BTC price chart. To rectify this, you must install the following extension: (https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en)
+
+
 ## Technologies Used
 
 In terms of the languages, frameworks, libraries used.
