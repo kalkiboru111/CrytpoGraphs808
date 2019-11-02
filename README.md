@@ -3,7 +3,9 @@
 
 The purpose of this project is to provide users with graphs which track the price movements of the BTC-USD market. The graph is parameterized by the hour, giving the user an intuitive presentation of the movements of the Bitcoin market on the day in question. This is potentially of interest to any site user with an interest in cryptocurrency, and of special interest to cryptocurrency investors. 
 
-As part of the Code Institute Course, this project was meant to test both CrossFilter, D3 and DC, or calling and working with data from APIs. This project was chosen to combine both of these areas. 
+The project also provides a more broad-brush, long-term view of BTC price data in the form of a chart, with further specifics (open, close, volume) regarding movements of the Bitcoin market over the preceding week. 
+
+As part of the Code Institute Course, this project was meant to test both CrossFilter, D3 and DC, or calling and working with data from APIs. This project was chosen to combine the skillsets of these areas. 
  
 ## UX
  

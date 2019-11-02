@@ -17,6 +17,11 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
+    <script>
+        queue()
+            .defer(d3.json, "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=10&api_key={63ccb497d786ebd21bb4ac7e1f8842f8ae98d05aafcbe02f0aa3c51fe98b91ad}")
+            .await(makeGraphs);
+    </script>
 </head>
 
 <body>
@@ -59,11 +64,6 @@
             </div>
         </div>
     </header>
-    <script>
-        queue()
-            .defer(d3.json, "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=10&api_key={63ccb497d786ebd21bb4ac7e1f8842f8ae98d05aafcbe02f0aa3c51fe98b91ad}")
-            .await(makeGraphs);
-    </script>
 </body>
 
 </html>
